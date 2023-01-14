@@ -103,24 +103,63 @@ def _build(
 
     # Populate Services
     cur.execute('''
-        INSERT INTO service (name)
+        INSERT INTO service (id, name)
         VALUES
-            ("Spaying"),
-            ("Neutering"),
-            ("Deworming"),
-            ("General Anesthesia"),
-            ("Local Anesthesia"),
-            ("IV Fluids"),
-            ("Rabies Shot"),
-            ("Claw Clipping"),
-            ("Broken Bone Setting"),
-            ("Bloodwork"),
-            ("Teeth Cleaning"),
-            ("X-Ray");
+            (1, "Spaying"),
+            (2, "Neutering"),
+            (3, "Deworming"),
+            (4, "General Anesthesia"),
+            (5, "Local Anesthesia"),
+            (6, "IV Fluids"),
+            (7, "Rabies Shot"),
+            (8, "Claw Clipping"),
+            (9, "Broken Bone Setting"),
+            (10, "Bloodwork"),
+            (11, "Teeth Cleaning"),
+            (12, "X-Ray");
     ''')
     con.commit()
 
+    # Populate species type
+    cur.execute('''
+        INSERT INTO species_type (id, name)
+        VALUES
+            (1, "Mammal Medium"),
+            (2, "Mammal Large"),
+            (3, "Mammal Small"),
+            (4, "Reptile/Amphibian"),
+            (5, "Bird");
+    ''')
+    con.commit()
 
+    # Populate species
+    cur.execute('''
+        INSERT INTO species (id, species_type_id, name)
+        VALUES
+            (1, 1, "Cat"),
+            (2, 1, "Dog"),
+            (3, 1, "Rabbit"),
+            (4, 1, "Pig"),
+            (5, 2, "Dog 100LBs+"),
+            (6, 2, "Pig 100LBs+"),
+            (7, 2, "Horse"),
+            (8, 2, "Cow"),
+            (9, 2, "Goat/Donkey/Mule"),
+            (10, 3, "Gerbil"),
+            (11, 3, "Guinea Pig"),
+            (12, 3, "Rat"),
+            (13, 3, "Mouse"),
+            (14, 4, "Gecko"),
+            (15, 4, "Snake"),
+            (16, 4, "Turtle"),
+            (17, 4, "Frog/Toad"),
+            (18, 4, "Monitor Lizard"),
+            (19, 4, "Bearded Dragon"),
+            (20, 5, "Parakeet"),
+            (21, 5, "Parrot"),
+            (22, 5, "Cockatiel");
+    ''')
+    con.commit()
 
 
 def build(logger: Logger):
