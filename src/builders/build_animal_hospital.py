@@ -73,6 +73,7 @@ def _build(
         "customer_id" INTEGER NOT NULL,
         "created_at"    TEXT NOT NULL,
         "due_at"    TEXT NOT NULL,
+        FOREIGN KEY(customer_id) REFERENCES customer(id)
     );
     ''')
     con.commit()
@@ -96,6 +97,25 @@ def _build(
         "cost_cents"    INTEGER NOT NULL,
         FOREIGN KEY(invoice_id) REFERENCES invoice(id)
     );
+    ''')
+    con.commit()
+
+
+    # Populate Services
+    cur.execute('''
+        INSERT INTO service (name)
+        VALUES
+            ("Spaying"),
+            ("Neutering"),
+            ("Deworming"),
+            ("General Anesthesia"),
+            ("Local Anesthesia"),
+            ("IV Fluids"),
+            ("Rabies Shot"),
+            ("Claw Clipping"),
+            ("Broken Bone Setting"),
+            ("Teeth Cleaning"),
+            ("X-Ray");
     ''')
     con.commit()
 
