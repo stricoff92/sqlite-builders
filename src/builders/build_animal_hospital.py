@@ -114,10 +114,14 @@ def _build(
             ("Rabies Shot"),
             ("Claw Clipping"),
             ("Broken Bone Setting"),
+            ("Bloodwork"),
             ("Teeth Cleaning"),
             ("X-Ray");
     ''')
     con.commit()
+
+
+
 
 def build(logger: Logger):
     (
